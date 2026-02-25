@@ -5,6 +5,7 @@ import SectionRow from './components/SectionRow';
 import { ScrollView } from 'react-native-gesture-handler';
 import CategoriesComp from './components/CategoriesComp';
 import { Sizes } from '../../styles/sizes';
+import TrendingComp from './components/TrendingComp';
 
 const HomeScreen: React.FC = () => {
   return (
@@ -15,7 +16,11 @@ const HomeScreen: React.FC = () => {
         <Text style={styles.categoryText}>Category</Text>
 
         <CategoriesComp />
-        <Text style={styles.categoryText}>Trending</Text>
+
+        <TrendingComp />
+        <Text style={styles.categoryText}>Category</Text>
+
+        <CategoriesComp />
       </ScrollView>
     </View>
   );
@@ -32,7 +37,6 @@ const styles = StyleSheet.create({
     fontSize: Sizes.size_27,
     fontFamily: 'Cochin',
     fontWeight: '800',
-
     paddingVertical: Sizes.size_15,
     alignSelf: 'center',
   },

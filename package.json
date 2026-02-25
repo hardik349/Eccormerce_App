@@ -4,6 +4,9 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
+    "android:dev": "react-native run-android --mode developmentDebug",
+    "android:stag": "react-native run-android --mode stagingRelease",
+    "android:prod": "react-native run-android --mode productionRelease",
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
@@ -21,6 +24,7 @@
     "axios-retry": "^4.5.0",
     "react": "19.2.3",
     "react-native": "0.84.0",
+    "react-native-config": "^1.6.1",
     "react-native-gesture-handler": "^2.30.0",
     "react-native-reanimated": "^4.2.2",
     "react-native-reanimated-carousel": "^4.0.3",

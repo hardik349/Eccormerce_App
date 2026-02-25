@@ -22,6 +22,7 @@ const CategoryImages = [
 const CategoriesComp: React.FC = () => {
   const { data, isLoading, error, refetch } = useCategories();
   console.log('Error:', error);
+  console.log('Cateory data:', data);
 
   if (error) return <Text>Something went wrong!</Text>;
 

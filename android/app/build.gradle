@@ -2,6 +2,13 @@ apply plugin: "com.android.application"
 apply plugin: "org.jetbrains.kotlin.android"
 apply plugin: "com.facebook.react"
 apply plugin: "com.google.gms.google-services"
+
+project.ext.envConfigFiles = [
+   production: ".env.production",
+   staging: ".env.staging",
+   development: ".env.development"
+]
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 /**
  * This is the configuration block to customize your React Native Android app.
  * By default you don't need to apply any configuration, just uncomment the lines you need.
@@ -77,6 +84,25 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
+        flavorDimensions "default"
+    productFlavors {
+        production {
+            minSdkVersion rootProject.ext.minSdkVersion
+            applicationId "com.ultrashop"
+            targetSdkVersion rootProject.ext.targetSdkVersion
+        }
+        staging {
+            minSdkVersion rootProject.ext.minSdkVersion
+            applicationId "com.ultrashop"
+            targetSdkVersion rootProject.ext.targetSdkVersion
+        }
+        development {
+            minSdkVersion rootProject.ext.minSdkVersion
+            applicationId "com.ultrashop"
+            targetSdkVersion rootProject.ext.targetSdkVersion
+        }
+    }
+
     namespace "com.ultrashop"
     defaultConfig {
         applicationId "com.ultrashop"
@@ -84,6 +110,7 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        resValue "string", "build_config_package", "com.ultrashop"
     }
     signingConfigs {
         debug {
@@ -96,6 +123,7 @@ android {
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
+            matchingFallbacks = ['debug', 'release']
         }
         release {
             // Caution! In production, you need to generate your own keystore file.
