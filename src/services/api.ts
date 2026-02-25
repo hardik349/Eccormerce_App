@@ -1,7 +1,7 @@
 import axios, { AxiosError, AxiosInstance } from 'axios';
 import axiosRetry from 'axios-retry';
 import { getBaseUrl } from '../config/remoteConfig';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+//import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const BASE_URL = getBaseUrl();
 
@@ -33,10 +33,10 @@ apiClient.interceptors.request.use(
     config.baseURL = dynamicUrl;
 
     // Token logic
-    const token = await AsyncStorage.getItem('authToken');
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
+    // const token = await AsyncStorage.getItem('authToken');
+    // if (token) {
+    //   config.headers.Authorization = `Bearer ${token}`;
+    // }
 
     return config;
   },
@@ -47,15 +47,15 @@ apiClient.interceptors.request.use(
 apiClient.interceptors.response.use(
   response => response,
   async (error: AxiosError) => {
-    if (error.response?.status === 401) {
-      // Handle unauthorized access
-      try {
-        await AsyncStorage.removeItem('authToken');
-        // Trigger logout action or navigate to login
-      } catch (err) {
-        console.error('Error clearing auth token:', err);
-      }
-    }
+    // if (error.response?.status === 401) {
+    //   // Handle unauthorized access
+    //   try {
+    //     await AsyncStorage.removeItem('authToken');
+    //     // Trigger logout action or navigate to login
+    //   } catch (err) {
+    //     console.error('Error clearing auth token:', err);
+    //   }
+    // }
     return Promise.reject(error);
   },
 );

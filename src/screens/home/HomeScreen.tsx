@@ -13,7 +13,9 @@ const HomeScreen: React.FC = () => {
       <ScrollView nestedScrollEnabled showsVerticalScrollIndicator={false}>
         <SectionRow />
         <Text style={styles.categoryText}>Category</Text>
+
         <CategoriesComp />
+        <Text style={styles.categoryText}>Trending</Text>
       </ScrollView>
     </View>
   );

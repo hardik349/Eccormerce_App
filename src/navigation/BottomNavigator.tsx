@@ -14,7 +14,7 @@ const BottomNavigator: React.FC = () => {
     <Tabs.Navigator
       screenOptions={({ route }) => ({
         tabBarActiveTintColor: '#000000',
-        tabBarLabel: false,
+        //tabBarLabel: false,
         tabBarIcon: ({ focused }) => {
           switch (route.name) {
             case navigationStrings.HOME:
