@@ -18,24 +18,26 @@ use_modular_headers!
 
 target 'Ultrashop' do
   config = use_native_modules!
-  
-  pod 'Firebase', :modular_headers => true
-    pod 'FirebaseCoreInternal', :modular_headers => true
-    pod 'GoogleUtilities', :modular_headers => true
-    pod 'FirebaseCore', :modular_headers => true
 
   use_react_native!(
     :path => config[:reactNativePath],
-    # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
+
+
+target 'UltrashopDevelopment' do
+  inherit! :complete
+end
+
+target 'UltrashopStaging' do
+  inherit! :complete
+end
 
   post_install do |installer|
     react_native_post_install(
       installer,
       config[:reactNativePath],
-      :mac_catalyst_enabled => false,
-      # :ccache_enabled => true
+      :mac_catalyst_enabled => false
     )
   end
 end
