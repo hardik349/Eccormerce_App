@@ -2,6 +2,7 @@ import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { Sizes } from '../../styles/sizes';
 import imagePath from '../../constants/imagePath';
+import colors from '../../styles/colors';
 
 const TopBar: React.FC = () => {
   return (
@@ -64,7 +65,7 @@ const styles = StyleSheet.create({
     height: Sizes.size_35,
     width: Sizes.size_35,
     borderRadius: 20,
-    backgroundColor: '#ececec',
+    backgroundColor: colors.backgroundExtraLight,
     justifyContent: 'center',
     alignItems: 'center',
   },

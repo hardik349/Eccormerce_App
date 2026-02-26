@@ -7,6 +7,7 @@ import Carousel, {
   Pagination,
 } from 'react-native-reanimated-carousel';
 import { useSharedValue } from 'react-native-reanimated';
+import colors from '../../../styles/colors';
 
 const Sections = [
   { id: 1, image: imagePath.BANNER1 },
@@ -86,7 +87,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     borderRadius: 20,
-    shadowColor: '#d59202',
+    shadowColor: colors.shadow,
     shadowOffset: {
       width: 0,
       height: 15,

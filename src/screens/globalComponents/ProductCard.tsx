@@ -1,12 +1,23 @@
 import React from 'react';
-import { Dimensions, Image, StyleSheet, Text, View } from 'react-native';
+import {
+  Dimensions,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import { Sizes } from '../../styles/sizes';
+import colors from '../../styles/colors';
+import fonts from '../../styles/fonts';
 
 interface ProductCardProps {
+  id: number;
   thumbnail: string;
   price: number;
   category: string;
   title: string;
+  onPress: () => void;
 }
 
 const width = Dimensions.get('window').width;
@@ -16,9 +27,10 @@ const ProductCard: React.FC<ProductCardProps> = ({
   price,
   category,
   title,
+  onPress,
 }) => {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
       <View style={styles.imageContainer}>
         <Image
           source={{ uri: thumbnail }}
@@ -31,7 +43,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
         {title}
       </Text>
       <Text style={styles.price}>$ {price}</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -47,31 +59,30 @@ const styles = StyleSheet.create({
     height: '75%',
     width: '98%',
     borderRadius: Sizes.size_15,
-    backgroundColor: '#dbdbdb',
+    backgroundColor: colors.backgroundLight,
   },
   image: {
     height: '100%',
     width: '100%',
     borderRadius: Sizes.size_15,
   },
-
   category: {
-    fontSize: Sizes.size_17,
-    fontFamily: 'Cochin',
+    fontSize: Sizes.size_15,
+    fontFamily: fonts.style,
     fontWeight: '600',
     marginVertical: Sizes.size_7,
   },
   title: {
     fontSize: Sizes.size_14,
-    fontFamily: 'Cochin',
-    fontWeight: '200',
+    fontFamily: fonts.style,
+    fontWeight: '400',
     marginBottom: Sizes.size_5,
     opacity: 0.6,
   },
   price: {
     fontSize: Sizes.size_15,
-    fontFamily: 'Cochin',
-    fontWeight: 'bold',
+    fontFamily: fonts.style,
+    fontWeight: '600',
     marginBottom: Sizes.size_5,
   },
 });

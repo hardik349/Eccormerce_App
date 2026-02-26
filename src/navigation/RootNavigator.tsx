@@ -2,6 +2,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import navigationStrings from './navigationStrings';
 import BottomNavigator from './BottomNavigator';
+import ProductDetailScreen from '../screens/pdp/ProductDetailScreen';
 
 const Stack = createStackNavigator();
 
@@ -11,6 +12,11 @@ const RootNavigator: React.FC = () => {
       <Stack.Screen
         name={navigationStrings.BOTTOMTABS}
         component={BottomNavigator}
+      />
+
+      <Stack.Screen
+        name={navigationStrings.PDP}
+        component={ProductDetailScreen}
       />
     </Stack.Navigator>
   );

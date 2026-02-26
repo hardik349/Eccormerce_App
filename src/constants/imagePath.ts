@@ -10,6 +10,8 @@ export default {
   PROFILE: require('../assets/png/Profile.png'),
   PROFILE_SELECTED: require('../assets/png/ProfileSelected.png'),
 
+  BACK: require('../assets/png/Back.png'),
+
   //top bar
   LOGO: require('../assets/png/Logo.png'),
   NOTIFY: require('../assets/png/notify.png'),

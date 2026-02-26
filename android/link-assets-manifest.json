@@ -1,0 +1,37 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/Tajawal-ExtraBold.ttf",
+      "sha1": "ae3e929ac8df1343e9eafb3b894e68b3dfe2bbf7"
+    },
+    {
+      "path": "src/assets/fonts/Tajawal-Light.ttf",
+      "sha1": "e18bc6e29892bd28265bb2c181191f81108ad365"
+    },
+    {
+      "path": "src/assets/fonts/Tajawal-Bold.ttf",
+      "sha1": "86c33e621bb9eecabcb569994ae1edf2dbd3bfd6"
+    },
+    {
+      "path": "src/assets/fonts/Tajawal-ExtraLight.ttf",
+      "sha1": "7e62b070270f1805b67784eb44d68d2289c98f43"
+    },
+    {
+      "path": "src/assets/fonts/Tajawal-Regular.ttf",
+      "sha1": "03b61c8af3509f93599cf118fd8be91b3f7ceedd"
+    },
+    {
+      "path": "src/assets/fonts/Tajawal-Medium.ttf",
+      "sha1": "0f5cb2c0169e78f25bb1626cdc9a2899844619fa"
+    },
+    {
+      "path": "src/assets/fonts/Montserrat.ttf",
+      "sha1": "a917c65005395d25b01713c6e4d6eae54fb80ad1"
+    },
+    {
+      "path": "src/assets/fonts/Tajawal-Black.ttf",
+      "sha1": "0f82d01655c51022295f0a138ee3f16efc35c914"
+    }
+  ]
+}

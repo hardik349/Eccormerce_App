@@ -7,6 +7,7 @@ export default {
   CART: 'Cart',
   FILTERS: 'Filters',
   SETTINGS: 'Settings',
+  PDP: 'Product detail',
 
   //stack
 };

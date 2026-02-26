@@ -8,8 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		261DF9CCFDE74F05AA834F58 /* Tajawal-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 37E0E27A40D64B25B4475D6D /* Tajawal-ExtraLight.ttf */; };
+		42710A09F7B147809DB20F21 /* Tajawal-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33DB6C1EEA874898BC683D9B /* Tajawal-Black.ttf */; };
+		5E8762E3BAC6403386E2988F /* Tajawal-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C78E2923059F47379E22EFD4 /* Tajawal-Medium.ttf */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
+		7B1119012D0C46768917824C /* Tajawal-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D92E587599BB4A799990EFCE /* Tajawal-ExtraBold.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		84F4134A7A6A447CBB6BF267 /* Tajawal-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83D77A8202B54A99BFCAC27B /* Tajawal-Bold.ttf */; };
+		88257F9E4A034FF4B1A36758 /* Tajawal-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A3ACDDA12D6A46988A1F3B83 /* Tajawal-Regular.ttf */; };
+		C08FB63758BF4AF8BD9E2E92 /* Tajawal-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BADFB5BC0B9E4185AE1D254B /* Tajawal-Light.ttf */; };
 		CE52E1A9918A4AA0EA5C8D17 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
 		D506FE5D7793A644AECD72F6 /* libPods-Ultrashop.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C17D4CF85E875C50765BDF9 /* libPods-Ultrashop.a */; };
 		D8723B4E89DE7042A51D4D59 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
@@ -26,6 +33,7 @@
 		FA934AE02F50093600AC17A5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA5F49EB2F4C7FB800EC6D09 /* GoogleService-Info.plist */; };
 		FA934AE12F50093600AC17A5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		FA934AE22F50093600AC17A5 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
+		A225677AD873484F865FBE90 /* Montserrat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 259E5C6105A549C6AA56A4D3 /* Montserrat.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +42,8 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Ultrashop/Info.plist; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = Ultrashop/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		2C17D4CF85E875C50765BDF9 /* libPods-Ultrashop.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Ultrashop.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		33DB6C1EEA874898BC683D9B /* Tajawal-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Tajawal-Black.ttf"; path = "../src/assets/fonts/Tajawal-Black.ttf"; sourceTree = "<group>"; };
+		37E0E27A40D64B25B4475D6D /* Tajawal-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Tajawal-ExtraLight.ttf"; path = "../src/assets/fonts/Tajawal-ExtraLight.ttf"; sourceTree = "<group>"; };
 		38819052D4B6FC802DC43F97 /* Pods-UltrashopStaging.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UltrashopStaging.release.xcconfig"; path = "Target Support Files/Pods-UltrashopStaging/Pods-UltrashopStaging.release.xcconfig"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-Ultrashop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ultrashop.debug.xcconfig"; path = "Target Support Files/Pods-Ultrashop/Pods-Ultrashop.debug.xcconfig"; sourceTree = "<group>"; };
 		485ED52DDCA33A01B079740F /* Pods-Ultrashop-UltrashopDevelopment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ultrashop-UltrashopDevelopment.release.xcconfig"; path = "Target Support Files/Pods-Ultrashop-UltrashopDevelopment/Pods-Ultrashop-UltrashopDevelopment.release.xcconfig"; sourceTree = "<group>"; };
@@ -44,7 +54,12 @@
 		581D96DB19FA2978F6C67CBB /* Pods-UltrashopDevelopment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UltrashopDevelopment.debug.xcconfig"; path = "Target Support Files/Pods-UltrashopDevelopment/Pods-UltrashopDevelopment.debug.xcconfig"; sourceTree = "<group>"; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Ultrashop/AppDelegate.swift; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Ultrashop/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		83D77A8202B54A99BFCAC27B /* Tajawal-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Tajawal-Bold.ttf"; path = "../src/assets/fonts/Tajawal-Bold.ttf"; sourceTree = "<group>"; };
+		A3ACDDA12D6A46988A1F3B83 /* Tajawal-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Tajawal-Regular.ttf"; path = "../src/assets/fonts/Tajawal-Regular.ttf"; sourceTree = "<group>"; };
 		ADA0770A6269AF49054309E3 /* Pods-UltrashopDevelopment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UltrashopDevelopment.release.xcconfig"; path = "Target Support Files/Pods-UltrashopDevelopment/Pods-UltrashopDevelopment.release.xcconfig"; sourceTree = "<group>"; };
+		BADFB5BC0B9E4185AE1D254B /* Tajawal-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Tajawal-Light.ttf"; path = "../src/assets/fonts/Tajawal-Light.ttf"; sourceTree = "<group>"; };
+		C78E2923059F47379E22EFD4 /* Tajawal-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Tajawal-Medium.ttf"; path = "../src/assets/fonts/Tajawal-Medium.ttf"; sourceTree = "<group>"; };
+		D92E587599BB4A799990EFCE /* Tajawal-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Tajawal-ExtraBold.ttf"; path = "../src/assets/fonts/Tajawal-ExtraBold.ttf"; sourceTree = "<group>"; };
 		D983405B4C3191DFF7A5991A /* libPods-Ultrashop-UltrashopDevelopment.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Ultrashop-UltrashopDevelopment.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F2B5F7967E71F26111961262 /* Pods-UltrashopStaging.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UltrashopStaging.debug.xcconfig"; path = "Target Support Files/Pods-UltrashopStaging/Pods-UltrashopStaging.debug.xcconfig"; sourceTree = "<group>"; };
@@ -54,6 +69,7 @@
 		FA934AEA2F50093600AC17A5 /* UltrashopDevelopment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UltrashopDevelopment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA934AEB2F50093600AC17A5 /* UltrashopDevelopment-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "UltrashopDevelopment-Info.plist"; path = "/Users/macbook/Documents/RactNativeProj/Ultrashop/ios/UltrashopDevelopment-Info.plist"; sourceTree = "<absolute>"; };
 		FC32888BB3D26F86BF400D18 /* Pods-Ultrashop-UltrashopStaging.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ultrashop-UltrashopStaging.release.xcconfig"; path = "Target Support Files/Pods-Ultrashop-UltrashopStaging/Pods-Ultrashop-UltrashopStaging.release.xcconfig"; sourceTree = "<group>"; };
+		259E5C6105A549C6AA56A4D3 /* Montserrat.ttf */ = {isa = PBXFileReference; name = "Montserrat.ttf"; path = "../src/assets/fonts/Montserrat.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +142,7 @@
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
 				FA934AD72F5008B500AC17A5 /* UltrashopStaging-Info.plist */,
 				FA934AEB2F50093600AC17A5 /* UltrashopDevelopment-Info.plist */,
+				FDAF9B5D2429457AABD37015 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -157,6 +174,22 @@
 				FC32888BB3D26F86BF400D18 /* Pods-Ultrashop-UltrashopStaging.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		FDAF9B5D2429457AABD37015 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D92E587599BB4A799990EFCE /* Tajawal-ExtraBold.ttf */,
+				BADFB5BC0B9E4185AE1D254B /* Tajawal-Light.ttf */,
+				83D77A8202B54A99BFCAC27B /* Tajawal-Bold.ttf */,
+				37E0E27A40D64B25B4475D6D /* Tajawal-ExtraLight.ttf */,
+				A3ACDDA12D6A46988A1F3B83 /* Tajawal-Regular.ttf */,
+				C78E2923059F47379E22EFD4 /* Tajawal-Medium.ttf */,
+				33DB6C1EEA874898BC683D9B /* Tajawal-Black.ttf */,
+				259E5C6105A549C6AA56A4D3 /* Montserrat.ttf */,
+			);
+			name = Resources;
+			path = "";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,6 +302,14 @@
 				FA5F49EC2F4C7FB800EC6D09 /* GoogleService-Info.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				CE52E1A9918A4AA0EA5C8D17 /* PrivacyInfo.xcprivacy in Resources */,
+				7B1119012D0C46768917824C /* Tajawal-ExtraBold.ttf in Resources */,
+				C08FB63758BF4AF8BD9E2E92 /* Tajawal-Light.ttf in Resources */,
+				84F4134A7A6A447CBB6BF267 /* Tajawal-Bold.ttf in Resources */,
+				261DF9CCFDE74F05AA834F58 /* Tajawal-ExtraLight.ttf in Resources */,
+				88257F9E4A034FF4B1A36758 /* Tajawal-Regular.ttf in Resources */,
+				5E8762E3BAC6403386E2988F /* Tajawal-Medium.ttf in Resources */,
+				42710A09F7B147809DB20F21 /* Tajawal-Black.ttf in Resources */,
+				A225677AD873484F865FBE90 /* Montserrat.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

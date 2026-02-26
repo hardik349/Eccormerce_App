@@ -6,6 +6,8 @@ import { ScrollView } from 'react-native-gesture-handler';
 import CategoriesComp from './components/CategoriesComp';
 import { Sizes } from '../../styles/sizes';
 import TrendingComp from './components/TrendingComp';
+import colors from '../../styles/colors';
+import fonts from '../../styles/fonts';
 
 const HomeScreen: React.FC = () => {
   return (
@@ -31,12 +33,12 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFF',
+    backgroundColor: colors.background,
   },
   categoryText: {
     fontSize: Sizes.size_27,
-    fontFamily: 'Cochin',
-    fontWeight: '800',
+    fontFamily: fonts.style,
+    fontWeight: '500',
     paddingVertical: Sizes.size_15,
     alignSelf: 'center',
   },

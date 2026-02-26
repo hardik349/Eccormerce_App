@@ -1,10 +1,21 @@
 import React from 'react';
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import {
+  FlatList,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import { useProducts } from '../../../hooks/useProducts';
 import ProductCard from '../../globalComponents/ProductCard';
 import { Sizes } from '../../../styles/sizes';
+import colors from '../../../styles/colors';
+import fonts from '../../../styles/fonts';
+import { useNavigation } from '@react-navigation/native';
+import navigationStrings from '../../../navigation/navigationStrings';
 
 const TrendingComp: React.FC = () => {
+  const navigation = useNavigation<any>();
   const { data, isLoading, error, refetch } = useProducts();
 
   console.log('Data:', data);
@@ -24,17 +35,23 @@ const TrendingComp: React.FC = () => {
         renderItem={({ item }) => {
           return (
             <ProductCard
+              id={item.id}
               title={item.title}
               category={item.category}
               thumbnail={item.thumbnail}
               price={item.price}
+              onPress={() =>
+                navigation.navigate(navigationStrings.PDP, {
+                  productId: item.id,
+                })
+              }
             />
           );
         }}
       />
-      <View style={styles.showContainer}>
-        <Text>SHOW ALL</Text>
-      </View>
+      <TouchableOpacity style={styles.showContainer}>
+        <Text style={styles.showAllText}>SHOW ALL</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -44,7 +61,7 @@ export default TrendingComp;
 const styles = StyleSheet.create({
   container: {
     marginVertical: Sizes.size_25,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: colors.backgroundExtraLight,
     borderRadius: Sizes.size_20,
   },
   showContainer: {
@@ -53,18 +70,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: Sizes.size_16,
-    backgroundColor: '#dbdbdb',
+    backgroundColor: colors.backgroundLight,
     paddingVertical: Sizes.size_15,
   },
   showAllText: {
     fontSize: Sizes.size_16,
-    //fontFamily: 'Cochin',
-    fontWeight: '800',
+    fontFamily: fonts.style,
+    fontWeight: '400',
   },
   categoryText: {
     fontSize: Sizes.size_27,
-    fontFamily: 'Cochin',
-    fontWeight: '800',
+    fontFamily: fonts.style,
+    fontWeight: '500',
     paddingVertical: Sizes.size_15,
     alignSelf: 'center',
   },

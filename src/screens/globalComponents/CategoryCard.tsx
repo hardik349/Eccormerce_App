@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { Sizes } from '../../styles/sizes';
+import fonts from '../../styles/fonts';
 
 export interface CategoryCardProps {
   image?: ImageBackgroundProps;
@@ -43,7 +44,6 @@ const styles = StyleSheet.create({
   imageBackground: {
     height: '100%',
     width: '100%',
-
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -53,8 +53,7 @@ const styles = StyleSheet.create({
   },
   categoryName: {
     fontSize: Sizes.size_22,
-    fontWeight: '600',
-    fontFamily: 'Georgia',
-    //color: '#FFF',
+    fontFamily: fonts.style,
+    fontWeight: '500',
   },
 });

@@ -1,5 +1,5 @@
 import apiClient from './api';
-import { ProductCategoryProps, ProductsResponse } from './types';
+import { ProductCategoryProps, ProductProps, ProductsResponse } from './types';
 
 export const fetchProductCategories = async (): Promise<
   ProductCategoryProps[]
@@ -17,6 +17,17 @@ export const fetchProductCategories = async (): Promise<
 export const fetchProducts = async (): Promise<ProductsResponse> => {
   try {
     const response = await apiClient.get<ProductsResponse>('/products');
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const fetchProductDetails = async (
+  id: number,
+): Promise<ProductProps> => {
+  try {
+    const response = await apiClient.get<ProductProps>(`/products/${id}`);
     return response.data;
   } catch (error) {
     throw error;
