@@ -49,7 +49,10 @@ const TrendingComp: React.FC = () => {
           );
         }}
       />
-      <TouchableOpacity style={styles.showContainer}>
+      <TouchableOpacity
+        style={styles.showContainer}
+        onPress={() => navigation.navigate(navigationStrings.PLP)}
+      >
         <Text style={styles.showAllText}>SHOW ALL</Text>
       </TouchableOpacity>
     </View>

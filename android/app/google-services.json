@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "765556162435",
+    "project_id": "ultrashop-5a00b",
+    "storage_bucket": "ultrashop-5a00b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:765556162435:android:a8ea8da3b58a935fe1c0b6",
+        "android_client_info": {
+          "package_name": "com.ultrashop"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdRf_yXFvPcFsP0gwS7WrzXTfFissHMWo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

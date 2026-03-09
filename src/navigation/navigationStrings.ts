@@ -8,6 +8,7 @@ export default {
   FILTERS: 'Filters',
   SETTINGS: 'Settings',
   PDP: 'Product detail',
+  PLP: 'Products',
 
   //stack
 };

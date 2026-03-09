@@ -67,20 +67,20 @@ const styles = StyleSheet.create({
     borderRadius: Sizes.size_15,
   },
   category: {
-    fontSize: Sizes.size_15,
+    fontSize: Sizes.size_13,
     fontFamily: fonts.style,
     fontWeight: '600',
     marginVertical: Sizes.size_7,
   },
   title: {
-    fontSize: Sizes.size_14,
+    fontSize: Sizes.size_13,
     fontFamily: fonts.style,
     fontWeight: '400',
     marginBottom: Sizes.size_5,
     opacity: 0.6,
   },
   price: {
-    fontSize: Sizes.size_15,
+    fontSize: Sizes.size_14,
     fontFamily: fonts.style,
     fontWeight: '600',
     marginBottom: Sizes.size_5,

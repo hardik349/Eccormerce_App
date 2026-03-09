@@ -17,6 +17,12 @@ import { Sizes } from '../../styles/sizes';
 import fonts from '../../styles/fonts';
 import imagePath from '../../constants/imagePath';
 import { ScrollView } from 'react-native-gesture-handler';
+import DetailsComp from './components/DetailsComp';
+import Carousel, {
+  Pagination,
+  ICarouselInstance,
+} from 'react-native-reanimated-carousel';
+import { useSharedValue } from 'react-native-reanimated';
 
 const width = Dimensions.get('window').width;
 
@@ -25,6 +31,16 @@ const ProductDetailScreen: React.FC<any> = ({ route }) => {
   const { data, isLoading, error, refetch } = useProductDetails(productId);
   console.log('PDP::', data);
   const navigation = useNavigation<any>();
+
+  const ref = React.useRef<ICarouselInstance>(null);
+  const progress = useSharedValue<number>(0);
+
+  const onPressPagination = (index: number) => {
+    ref.current?.scrollTo({
+      count: index - progress.value,
+      animated: true,
+    });
+  };
 
   if (isLoading) {
     return (
@@ -37,7 +53,43 @@ const ProductDetailScreen: React.FC<any> = ({ route }) => {
     <View style={styles.container}>
       <BackRow onBack={() => navigation.goBack()} />
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={styles.imageContainer}>
+        <Carousel
+          loop
+          width={width}
+          height={width * 1.4}
+          autoPlay={false}
+          data={data?.images}
+          onProgressChange={progress}
+          scrollAnimationDuration={800}
+          onConfigurePanGesture={gesture => {
+            gesture.activeOffsetX([-10, 10]).failOffsetY([-10, 10]);
+          }}
+          renderItem={({ item }) => (
+            <View style={styles.imageContainer}>
+              <ImageBackground
+                source={{ uri: item }}
+                style={styles.image}
+                imageStyle={styles.imageStyle}
+              >
+                <View style={styles.new}>
+                  <Text style={styles.newText}>NEW</Text>
+                </View>
+              </ImageBackground>
+            </View>
+          )}
+        />
+
+        <Pagination.Basic
+          progress={progress}
+          data={data?.images || []}
+          dotStyle={{
+            backgroundColor: 'rgba(149, 149, 149, 0.6)',
+            borderRadius: 40,
+          }}
+          containerStyle={{ gap: 5 }}
+          onPress={onPressPagination}
+        />
+        {/* <View style={styles.imageContainer}>
           <ImageBackground
             source={{ uri: data?.thumbnail }}
             style={styles.image}
@@ -47,7 +99,7 @@ const ProductDetailScreen: React.FC<any> = ({ route }) => {
               <Text style={styles.newText}>NEW</Text>
             </View>
           </ImageBackground>
-        </View>
+        </View> */}
 
         <View
           style={{
@@ -76,6 +128,14 @@ const ProductDetailScreen: React.FC<any> = ({ route }) => {
             <Text style={styles.buyNowText}>Buy now</Text>
           </TouchableOpacity>
         </View>
+
+        <DetailsComp
+          brand={data?.brand}
+          availability={data?.availabilityStatus}
+          warranty={data?.warrantyInformation}
+          shipping={data?.shippingInformation}
+          returnPolicy={data?.returnPolicy}
+        />
       </ScrollView>
     </View>
   );
@@ -99,7 +159,7 @@ const styles = StyleSheet.create({
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: 15,
+      height: 10,
     },
     shadowOpacity: 0.5,
     shadowRadius: 10,

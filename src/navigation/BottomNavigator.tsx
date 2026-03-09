@@ -6,6 +6,7 @@ import WishlistScreen from '../screens/wishlist/WishlistScreen';
 import FilterScreen from '../screens/filters/FilterScreen';
 import CartScreen from '../screens/cart/CartScreen';
 import SettingsScreen from '../screens/settings/SettingsScreen';
+import ProductListingScreen from '../screens/plp/ProductListingScreen';
 
 const Tabs = createNativeBottomTabNavigator();
 
@@ -30,7 +31,7 @@ const BottomNavigator: React.FC = () => {
                 name: focused ? 'heart.fill' : 'heart',
               };
 
-            case navigationStrings.FILTERS:
+            case navigationStrings.PLP:
               return {
                 type: 'sfSymbol',
                 name: focused ? 'menucard.fill' : 'menucard',
@@ -62,7 +63,10 @@ const BottomNavigator: React.FC = () => {
         name={navigationStrings.WISHLIST}
         component={WishlistScreen}
       />
-      <Tabs.Screen name={navigationStrings.FILTERS} component={FilterScreen} />
+      <Tabs.Screen
+        name={navigationStrings.PLP}
+        component={ProductListingScreen}
+      />
       <Tabs.Screen name={navigationStrings.CART} component={CartScreen} />
       <Tabs.Screen
         name={navigationStrings.SETTINGS}

@@ -3,6 +3,7 @@ import React from 'react';
 import navigationStrings from './navigationStrings';
 import BottomNavigator from './BottomNavigator';
 import ProductDetailScreen from '../screens/pdp/ProductDetailScreen';
+import ProductListingScreen from '../screens/plp/ProductListingScreen';
 
 const Stack = createStackNavigator();
 
@@ -18,6 +19,10 @@ const RootNavigator: React.FC = () => {
         name={navigationStrings.PDP}
         component={ProductDetailScreen}
       />
+      {/* <Stack.Screen
+        name={navigationStrings.PLP}
+        component={ProductListingScreen}
+      /> */}
     </Stack.Navigator>
   );
 };

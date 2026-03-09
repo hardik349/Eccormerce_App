@@ -3,14 +3,17 @@ export default {
   HOME_SELECTED: require('../assets/png/HomeSelected.png'),
   WISHLIST: require('../assets/png/Wishlist.png'),
   WISHLIST_SELECTED: require('../assets/png/WishListSelected.png'),
-  FILTER: require('../assets/png/Filter.png'),
-  FILTER_SELECTED: require('../assets/png/FilterSelected.png'),
+  // FILTER: require('../assets/png/Filter.png'),
+  // FILTER_SELECTED: require('../assets/png/FilterSelected.png'),
   CART: require('../assets/png/Cart.png'),
   CART_SELECTED: require('../assets/png/CartSelected.png'),
   PROFILE: require('../assets/png/Profile.png'),
   PROFILE_SELECTED: require('../assets/png/ProfileSelected.png'),
 
   BACK: require('../assets/png/Back.png'),
+  FILTER: require('../assets/png/FilterCopy.png'),
+  PRICE: require('../assets/png/Price.png'),
+  CROSS: require('../assets/png/Multiply.png'),
 
   //top bar
   LOGO: require('../assets/png/Logo.png'),

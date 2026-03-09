@@ -16,6 +16,7 @@
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		84F4134A7A6A447CBB6BF267 /* Tajawal-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83D77A8202B54A99BFCAC27B /* Tajawal-Bold.ttf */; };
 		88257F9E4A034FF4B1A36758 /* Tajawal-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A3ACDDA12D6A46988A1F3B83 /* Tajawal-Regular.ttf */; };
+		A225677AD873484F865FBE90 /* Montserrat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 259E5C6105A549C6AA56A4D3 /* Montserrat.ttf */; };
 		C08FB63758BF4AF8BD9E2E92 /* Tajawal-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BADFB5BC0B9E4185AE1D254B /* Tajawal-Light.ttf */; };
 		CE52E1A9918A4AA0EA5C8D17 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
 		D506FE5D7793A644AECD72F6 /* libPods-Ultrashop.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C17D4CF85E875C50765BDF9 /* libPods-Ultrashop.a */; };
@@ -33,7 +34,6 @@
 		FA934AE02F50093600AC17A5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA5F49EB2F4C7FB800EC6D09 /* GoogleService-Info.plist */; };
 		FA934AE12F50093600AC17A5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		FA934AE22F50093600AC17A5 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
-		A225677AD873484F865FBE90 /* Montserrat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 259E5C6105A549C6AA56A4D3 /* Montserrat.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +41,7 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Ultrashop/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Ultrashop/Info.plist; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = Ultrashop/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		259E5C6105A549C6AA56A4D3 /* Montserrat.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Montserrat.ttf; path = ../src/assets/fonts/Montserrat.ttf; sourceTree = "<group>"; };
 		2C17D4CF85E875C50765BDF9 /* libPods-Ultrashop.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Ultrashop.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		33DB6C1EEA874898BC683D9B /* Tajawal-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Tajawal-Black.ttf"; path = "../src/assets/fonts/Tajawal-Black.ttf"; sourceTree = "<group>"; };
 		37E0E27A40D64B25B4475D6D /* Tajawal-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Tajawal-ExtraLight.ttf"; path = "../src/assets/fonts/Tajawal-ExtraLight.ttf"; sourceTree = "<group>"; };
@@ -69,7 +70,6 @@
 		FA934AEA2F50093600AC17A5 /* UltrashopDevelopment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UltrashopDevelopment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA934AEB2F50093600AC17A5 /* UltrashopDevelopment-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "UltrashopDevelopment-Info.plist"; path = "/Users/macbook/Documents/RactNativeProj/Ultrashop/ios/UltrashopDevelopment-Info.plist"; sourceTree = "<absolute>"; };
 		FC32888BB3D26F86BF400D18 /* Pods-Ultrashop-UltrashopStaging.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ultrashop-UltrashopStaging.release.xcconfig"; path = "Target Support Files/Pods-Ultrashop-UltrashopStaging/Pods-Ultrashop-UltrashopStaging.release.xcconfig"; sourceTree = "<group>"; };
-		259E5C6105A549C6AA56A4D3 /* Montserrat.ttf */ = {isa = PBXFileReference; name = "Montserrat.ttf"; path = "../src/assets/fonts/Montserrat.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
