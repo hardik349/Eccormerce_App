@@ -1,7 +1,7 @@
 export default {
   noColor: 'transparent',
   primary: '#ffffff',
-  shadow: '#d59202',
+  shadow: '#adadad',
   red: '#bd1111',
   black: '#000',
 

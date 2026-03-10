@@ -7,6 +7,7 @@ import {
   Modal,
   Pressable,
   SafeAreaView,
+  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -22,17 +23,66 @@ import BackRow from '../globalComponents/BackRow';
 import imagePath from '../../constants/imagePath';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
 import fonts from '../../styles/fonts';
+import Animated, {
+  Easing,
+  useAnimatedScrollHandler,
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated';
+import FiltersModal from './components/FiltersModal';
 
 const width = Dimensions.get('window').width;
 
 const ProductListingScreen = () => {
   const navigation = useNavigation<any>();
   const [isPriceModalVisible, setPriceModalVisible] = useState(false);
-  const [values, setValues] = useState([10, 50]); // Initial Min and Max
+  const [isFiltersModalVisible, setFiltersModalVisible] = useState(false);
+  const [categorySelected, setCategorySelected] = useState<string | null>(null);
+  const [minRating, setMinRating] = useState(0);
+  const [values, setValues] = useState([10, 50]);
   const [appliedPriceRange, setAppliedPriceRange] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
 
+  const lastContentOffset = useSharedValue(0);
+  const translateY = useSharedValue(0);
+
+  const actionBarStyle = useAnimatedStyle(() => {
+    const isHidden = translateY.value < 0;
+
+    return {
+      opacity: withTiming(isHidden ? 0 : 1, { duration: 300 }),
+      marginBottom: withTiming(isHidden ? -100 : 0, { duration: 300 }),
+      transform: [
+        {
+          translateY: withTiming(translateY.value, {
+            duration: 300,
+            easing: Easing.out(Easing.quad),
+          }),
+        },
+      ],
+    };
+  });
+  const scrollHandler = useAnimatedScrollHandler({
+    onScroll: event => {
+      const currentOffset = event.contentOffset.y;
+      const diff = currentOffset - lastContentOffset.value;
+
+      //If scrolling down and past a small threshold (50)
+      if (diff > 5 && currentOffset > 50) {
+        translateY.value = -100; // HIDE
+      }
+      //If scrolling up OR at the very top of the list
+      else if (diff < -5 || currentOffset <= 0) {
+        translateY.value = 0; // SHOW
+      }
+
+      lastContentOffset.value = currentOffset;
+    },
+  });
+
   const { data, isLoading, error, refetch } = useProducts();
+  console.log('data:::', data);
 
   const filteredProducts = React.useMemo(() => {
     if (!data?.products) return [];
@@ -46,9 +96,25 @@ const ProductListingScreen = () => {
         ? product.price >= appliedPriceRange[0] &&
           product.price <= appliedPriceRange[1]
         : true;
-      return matchesSearch && matchesPrice;
+
+      const matchesCategory = categorySelected
+        ? product.category === categorySelected
+        : true;
+
+      const matchesRating = product.rating >= minRating;
+
+      return matchesSearch && matchesPrice && matchesCategory && matchesRating;
     });
-  }, [searchQuery, appliedPriceRange, data]);
+  }, [searchQuery, appliedPriceRange, data, categorySelected, minRating]);
+
+  const availableCategories = React.useMemo(() => {
+    if (!data?.products) return [];
+    const cats = data.products.map((p: any) => p.category);
+    return [...new Set(cats)] as string[]; // Remove duplicates
+  }, [data]);
+
+  // 2. Add a removal function for the UI chips (optional but helpful)
+  const removeCategoryFilter = () => setCategorySelected(null);
 
   const multiSliderValuesChange = values => {
     setValues(values);
@@ -58,16 +124,9 @@ const ProductListingScreen = () => {
     setAppliedPriceRange(null);
   };
 
-  //   const renderItem = ( item ) => (
-  //     <ProductCard
-  //       id={item.id}
-  //       title={item.title}
-  //       price={item.price}
-  //       category={item.category}
-  //       thumbnail={item.thumbnail}
-  //       onPress={() => console.log(`Pressed ${item.title}`)}
-  //     />
-  //   );
+  const removeRatingFilter = () => {
+    setMinRating(0);
+  };
 
   if (isLoading)
     return <ActivityIndicator size={'large'} style={{ flex: 1 }} />;
@@ -77,33 +136,67 @@ const ProductListingScreen = () => {
       <BackRow onBack={() => navigation.goBack()} />
 
       {/* Filter section */}
-      <View style={styles.filterSection}>
-        <TouchableOpacity
-          style={styles.priceImage}
-          onPress={() => setPriceModalVisible(true)}
-        >
-          <Image source={imagePath.PRICE} style={styles.image} />
-        </TouchableOpacity>
+      <View style={{ overflow: 'hidden' }}>
+        <Animated.View style={[actionBarStyle]}>
+          <View style={styles.filterSection}>
+            <TouchableOpacity
+              style={styles.priceImage}
+              onPress={() => setPriceModalVisible(true)}
+            >
+              <Image source={imagePath.PRICE} style={styles.image} />
+            </TouchableOpacity>
 
-        <Text style={styles.verticalDivider}>|</Text>
+            <Text style={styles.verticalDivider}>|</Text>
 
-        <View style={styles.filterImage}>
-          <Image source={imagePath.FILTER} style={styles.image} />
-        </View>
+            <TouchableOpacity
+              style={styles.filterImage}
+              onPress={() => setFiltersModalVisible(true)}
+            >
+              <Image source={imagePath.FILTER} style={styles.image} />
+            </TouchableOpacity>
+          </View>
+
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.filterRow}
+          >
+            {!!appliedPriceRange && (
+              <TouchableOpacity
+                onPress={removePriceFilter}
+                style={styles.removePriceContainer}
+              >
+                <Text style={styles.cancelText}>
+                  $ {appliedPriceRange[0]} - $ {appliedPriceRange[1]}
+                </Text>
+              </TouchableOpacity>
+            )}
+            {!!minRating && (
+              <TouchableOpacity
+                onPress={removeRatingFilter}
+                style={styles.removePriceContainer}
+              >
+                <Text style={styles.cancelText}>
+                  <Text style={{ color: '#eacf1e' }}>★</Text> {minRating}+
+                  rating
+                </Text>
+              </TouchableOpacity>
+            )}
+            {!!categorySelected && (
+              <TouchableOpacity
+                onPress={removeCategoryFilter}
+                style={styles.removePriceContainer}
+              >
+                <Text style={styles.cancelText}>{categorySelected}</Text>
+              </TouchableOpacity>
+            )}
+          </ScrollView>
+        </Animated.View>
       </View>
 
-      {appliedPriceRange && (
-        <TouchableOpacity
-          onPress={removePriceFilter}
-          style={styles.removePriceContainer}
-        >
-          <Text style={styles.cancelText}>
-            $ {appliedPriceRange[0]} - $ {appliedPriceRange[1]}
-          </Text>
-        </TouchableOpacity>
-      )}
-
-      <FlatList
+      <Animated.FlatList
+        onScroll={scrollHandler}
+        scrollEventThrottle={16}
         data={filteredProducts || []}
         renderItem={({ item }) => {
           return (
@@ -152,19 +245,21 @@ const ProductListingScreen = () => {
               </View>
             </View>
 
-            <MultiSlider
-              values={[values[0], values[1]]}
-              sliderLength={300} // Width of the slider
-              onValuesChange={multiSliderValuesChange}
-              min={0}
-              max={100}
-              step={1}
-              allowOverlap={false}
-              snapped
-              selectedStyle={{ backgroundColor: '#000000' }}
-              unselectedStyle={{ backgroundColor: '#CECECE' }}
-              markerStyle={styles.marker}
-            />
+            <View style={styles.sliderContainer}>
+              <MultiSlider
+                values={[values[0], values[1]]}
+                sliderLength={300}
+                onValuesChange={multiSliderValuesChange}
+                min={0}
+                max={100}
+                step={1}
+                allowOverlap={false}
+                snapped
+                selectedStyle={{ backgroundColor: '#000000' }}
+                unselectedStyle={{ backgroundColor: '#CECECE' }}
+                markerStyle={styles.marker}
+              />
+            </View>
             <View style={styles.modalRow}>
               <TouchableOpacity
                 style={styles.applyButton}
@@ -186,6 +281,16 @@ const ProductListingScreen = () => {
           </View>
         </Pressable>
       </Modal>
+
+      <FiltersModal
+        isFilterModalVisible={isFiltersModalVisible}
+        onClose={() => setFiltersModalVisible(false)}
+        minRating={minRating}
+        setMinRating={setMinRating}
+        categories={availableCategories}
+        selectedCategory={categorySelected}
+        setSelectedCategory={setCategorySelected}
+      />
     </View>
   );
 };
@@ -205,13 +310,18 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
   },
+  filterRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   removePriceContainer: {
     borderWidth: 1,
     opacity: 0.5,
     alignItems: 'center',
     width: Sizes.size_100,
     justifyContent: 'space-between',
-    marginHorizontal: Sizes.size_20,
+    marginHorizontal: Sizes.size_10,
     paddingVertical: Sizes.size_5,
     marginBottom: Sizes.size_10,
     borderRadius: Sizes.size_18,
@@ -296,6 +406,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: Sizes.size_12,
+  },
+  sliderContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: Sizes.size_5,
+    marginTop: Sizes.size_10,
+    paddingHorizontal: Sizes.size_5,
+    borderRadius: Sizes.size_15,
+    borderWidth: 1,
+    borderColor: colors.backgroundLight,
   },
   priceText: {
     fontSize: Sizes.size_14,
