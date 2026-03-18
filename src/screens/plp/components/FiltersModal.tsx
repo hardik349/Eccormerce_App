@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {
+  FlatList,
   Modal,
   Pressable,
   ScrollView,
@@ -15,7 +16,7 @@ import fonts from '../../../styles/fonts';
 interface FiltersModalProps {
   isFilterModalVisible: boolean;
   onClose: () => void;
-  categories: string[];
+  categories: any[];
   selectedCategory: string | null;
   setSelectedCategory: (cat: string | null) => void;
   minRating: number;
@@ -32,6 +33,21 @@ const FiltersModal: React.FC<FiltersModalProps> = ({
   setMinRating,
 }) => {
   const ratings = [1, 2, 3, 4, 5];
+
+  const renderCategoryChip = ({ item }: { item: any }) => {
+    const isActive = selectedCategory === item;
+
+    return (
+      <TouchableOpacity
+        style={[styles.chip, isActive && styles.activeChip]}
+        onPress={() => setSelectedCategory(isActive ? null : item)}
+      >
+        <Text style={[styles.chipText, isActive && styles.activeChipText]}>
+          {item.charAt(0).toUpperCase() + item.slice(1)}
+        </Text>
+      </TouchableOpacity>
+    );
+  };
 
   return (
     <Modal
@@ -68,33 +84,15 @@ const FiltersModal: React.FC<FiltersModalProps> = ({
           </View>
 
           <Text style={styles.sectionLabel}>Categories</Text>
-          <ScrollView
-            horizontal
+          <FlatList
+            data={categories}
+            renderItem={renderCategoryChip}
+            keyExtractor={item => item}
+            horizontal={true}
             showsHorizontalScrollIndicator={false}
-            style={styles.chipContainer}
-          >
-            {categories.map(cat => (
-              <TouchableOpacity
-                key={cat}
-                style={[
-                  styles.chip,
-                  selectedCategory === cat && styles.activeChip,
-                ]}
-                onPress={() =>
-                  setSelectedCategory(selectedCategory === cat ? null : cat)
-                }
-              >
-                <Text
-                  style={[
-                    styles.chipText,
-                    selectedCategory === cat && styles.activeChipText,
-                  ]}
-                >
-                  {cat.charAt(0).toUpperCase() + cat.slice(1)}
-                </Text>
-              </TouchableOpacity>
-            ))}
-          </ScrollView>
+            contentContainerStyle={styles.chipContainer}
+            initialNumToRender={10}
+          />
 
           <View style={styles.modalRow}>
             <TouchableOpacity

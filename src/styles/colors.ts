@@ -7,6 +7,7 @@ export default {
 
   //backgrounds
   background: '#FFF',
+  backgroundOff: '#747474',
   backgroundLight: '#dbdbdb',
   backgroundNormal: '#e9e9e9',
   backgroundExtraLight: '#f5f5f5',

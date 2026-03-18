@@ -21,6 +21,7 @@ interface DetailsCompTypes {
   availability?: string;
   returnPolicy?: string;
   images?: string;
+  description?: string;
 }
 
 const width = Dimensions.get('window').width;
@@ -32,11 +33,34 @@ const DetailsComp: React.FC<DetailsCompTypes> = ({
   availability,
   returnPolicy,
   images,
+  description,
 }) => {
+  const [showDesc, setShowDesc] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
   const [showReturn, setShowReturn] = useState(false);
   return (
     <View style={styles.container}>
+      <TouchableOpacity
+        style={styles.detailsRow}
+        onPress={() => setShowDesc(!showDesc)}
+      >
+        <Text style={styles.detailsText}> Description</Text>
+        <View style={styles.arrowContainer}>
+          <Image
+            source={imagePath.BACK}
+            style={[
+              styles.arrow,
+              { transform: [{ rotate: showDesc ? '-90deg' : '180deg' }] },
+            ]}
+          />
+        </View>
+      </TouchableOpacity>
+      {showDesc && (
+        <View style={styles.detailContainer}>
+          <Text style={styles.label}>{description}</Text>
+        </View>
+      )}
+      <View style={styles.divider} />
       <TouchableOpacity
         style={styles.detailsRow}
         onPress={() => setShowDetails(!showDetails)}
@@ -101,21 +125,6 @@ const DetailsComp: React.FC<DetailsCompTypes> = ({
         </View>
       )}
       <View style={styles.divider} />
-
-      <FlatList
-        data={images}
-        horizontal
-        pagingEnabled
-        showsHorizontalScrollIndicator={false}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={({ item }) => (
-          <Image
-            source={{ uri: item }}
-            style={styles.image}
-            resizeMode="cover"
-          />
-        )}
-      />
     </View>
   );
 };
@@ -125,7 +134,7 @@ export default DetailsComp;
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: Sizes.size_12,
-    marginVertical: Sizes.size_18,
+    marginTop: Sizes.size_18,
   },
   detailsRow: {
     flexDirection: 'row',

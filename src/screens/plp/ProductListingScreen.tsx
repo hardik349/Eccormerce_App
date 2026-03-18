@@ -2,11 +2,9 @@ import React, { useState } from 'react';
 import {
   ActivityIndicator,
   Dimensions,
-  FlatList,
   Image,
   Modal,
   Pressable,
-  SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,
@@ -25,6 +23,7 @@ import MultiSlider from '@ptomasroos/react-native-multi-slider';
 import fonts from '../../styles/fonts';
 import Animated, {
   Easing,
+  PerformanceMonitor,
   useAnimatedScrollHandler,
   useAnimatedStyle,
   useSharedValue,
@@ -40,7 +39,7 @@ const ProductListingScreen = () => {
   const [isFiltersModalVisible, setFiltersModalVisible] = useState(false);
   const [categorySelected, setCategorySelected] = useState<string | null>(null);
   const [minRating, setMinRating] = useState(0);
-  const [values, setValues] = useState([10, 50]);
+  const [values, setValues] = useState<any>([10, 50]);
   const [appliedPriceRange, setAppliedPriceRange] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -109,14 +108,16 @@ const ProductListingScreen = () => {
 
   const availableCategories = React.useMemo(() => {
     if (!data?.products) return [];
-    const cats = data.products.map((p: any) => p.category);
-    return [...new Set(cats)] as string[]; // Remove duplicates
+    const set = new Set();
+    data.products.forEach(p => {
+      if (p.category) set.add(p.category);
+    });
+    return Array.from(set);
   }, [data]);
 
-  // 2. Add a removal function for the UI chips (optional but helpful)
   const removeCategoryFilter = () => setCategorySelected(null);
 
-  const multiSliderValuesChange = values => {
+  const multiSliderValuesChange = ({ values }: { values: any }) => {
     setValues(values);
   };
 
@@ -133,7 +134,10 @@ const ProductListingScreen = () => {
 
   return (
     <View style={styles.safeArea}>
-      <BackRow onBack={() => navigation.goBack()} />
+      <BackRow
+        onBack={() => navigation.goBack()}
+        cartNavigate={() => navigation.navigate(navigationStrings.CART)}
+      />
 
       {/* Filter section */}
       <View style={{ overflow: 'hidden' }}>

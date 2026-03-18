@@ -16,7 +16,9 @@ export const fetchProductCategories = async (): Promise<
 
 export const fetchProducts = async (): Promise<ProductsResponse> => {
   try {
-    const response = await apiClient.get<ProductsResponse>('/products');
+    const response = await apiClient.get<ProductsResponse>(
+      '/products?limit=190',
+    );
     return response.data;
   } catch (error) {
     throw error;

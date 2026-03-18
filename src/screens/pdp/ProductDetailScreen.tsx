@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   ActivityIndicator,
+  Alert,
   Dimensions,
   Image,
   ImageBackground,
@@ -23,17 +24,54 @@ import Carousel, {
   ICarouselInstance,
 } from 'react-native-reanimated-carousel';
 import { useSharedValue } from 'react-native-reanimated';
+import { useProducts } from '../../hooks/useProducts';
+import SimilarProductComp from './components/SimilarProductComp';
+import RatingComp from './components/RatingComp';
+import { useDispatch } from 'react-redux';
+import { addItemToCart } from '../../redux/slices/CartSlice';
+import navigationStrings from '../../navigation/navigationStrings';
 
 const width = Dimensions.get('window').width;
 
 const ProductDetailScreen: React.FC<any> = ({ route }) => {
   const { productId } = route.params;
-  const { data, isLoading, error, refetch } = useProductDetails(productId);
-  console.log('PDP::', data);
   const navigation = useNavigation<any>();
-
   const ref = React.useRef<ICarouselInstance>(null);
   const progress = useSharedValue<number>(0);
+  const dispatch = useDispatch();
+
+  const { data, isLoading, error, refetch } = useProductDetails(productId);
+
+  const { data: similarProducts, isLoading: similarProductLoading } =
+    useProducts();
+  console.log('data:::', data);
+
+  const filteredProducts = React.useMemo(() => {
+    if (!similarProducts?.products || !data?.category) return [];
+
+    return similarProducts.products.filter((product: any) => {
+      return product.category === data.category && product.id !== data.id;
+    });
+  }, [similarProducts, data]);
+  console.log('Filteredproducts pdp::', filteredProducts);
+  console.log('Data category:', data?.category);
+
+  const handleAddToCart = () => {
+    if (!data) return;
+
+    const productForCart = {
+      id: data.id,
+      title: data.title,
+      category: data.category,
+      price: data.price,
+      thumbnail: data.thumbnail,
+      stock: data.stock,
+    };
+
+    dispatch(addItemToCart(productForCart));
+
+    Alert.alert('Product added to cart');
+  };
 
   const onPressPagination = (index: number) => {
     ref.current?.scrollTo({
@@ -51,7 +89,14 @@ const ProductDetailScreen: React.FC<any> = ({ route }) => {
   }
   return (
     <View style={styles.container}>
-      <BackRow onBack={() => navigation.goBack()} />
+      <BackRow
+        onBack={() => navigation.goBack()}
+        cartNavigate={() =>
+          navigation.navigate(navigationStrings.BOTTOMTABS, {
+            screen: navigationStrings.CART,
+          })
+        }
+      />
       <ScrollView showsVerticalScrollIndicator={false}>
         <Carousel
           loop
@@ -89,17 +134,6 @@ const ProductDetailScreen: React.FC<any> = ({ route }) => {
           containerStyle={{ gap: 5 }}
           onPress={onPressPagination}
         />
-        {/* <View style={styles.imageContainer}>
-          <ImageBackground
-            source={{ uri: data?.thumbnail }}
-            style={styles.image}
-            imageStyle={styles.imageStyle}
-          >
-            <View style={styles.new}>
-              <Text style={styles.newText}>NEW</Text>
-            </View>
-          </ImageBackground>
-        </View> */}
 
         <View
           style={{
@@ -121,7 +155,7 @@ const ProductDetailScreen: React.FC<any> = ({ route }) => {
         </View>
 
         <View style={styles.cartContainer}>
-          <TouchableOpacity style={styles.cart}>
+          <TouchableOpacity style={styles.cart} onPress={handleAddToCart}>
             <Image source={imagePath.CART} style={{ height: 25, width: 25 }} />
           </TouchableOpacity>
           <TouchableOpacity style={styles.buyNow}>
@@ -135,7 +169,14 @@ const ProductDetailScreen: React.FC<any> = ({ route }) => {
           warranty={data?.warrantyInformation}
           shipping={data?.shippingInformation}
           returnPolicy={data?.returnPolicy}
+          description={data?.description}
         />
+
+        {filteredProducts.length > 0 && (
+          <SimilarProductComp products={filteredProducts} />
+        )}
+
+        <RatingComp rating={data?.rating} reviews={data?.reviews} />
       </ScrollView>
     </View>
   );
