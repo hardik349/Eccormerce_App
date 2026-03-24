@@ -4,6 +4,7 @@ import navigationStrings from './navigationStrings';
 import BottomNavigator from './BottomNavigator';
 import ProductDetailScreen from '../screens/pdp/ProductDetailScreen';
 import ProductListingScreen from '../screens/plp/ProductListingScreen';
+import CheckoutScreen from '../screens/checkout/CheckoutScreen';
 
 const Stack = createStackNavigator();
 
@@ -18,6 +19,11 @@ const RootNavigator: React.FC = () => {
       <Stack.Screen
         name={navigationStrings.PDP}
         component={ProductDetailScreen}
+      />
+
+      <Stack.Screen
+        name={navigationStrings.CHECKOUT}
+        component={CheckoutScreen}
       />
       {/* <Stack.Screen
         name={navigationStrings.PLP}

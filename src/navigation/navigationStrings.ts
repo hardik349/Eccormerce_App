@@ -9,6 +9,7 @@ export default {
   SETTINGS: 'Settings',
   PDP: 'Product detail',
   PLP: 'Products',
+  CHECKOUT: 'Checkout',
 
   //stack
 };
