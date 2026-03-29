@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: Sizes.size_20,
+    //paddingHorizontal: Sizes.size_20,
   },
   imageBackground: {
     width: width / 2.2,

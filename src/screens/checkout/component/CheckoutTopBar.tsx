@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   },
   title: {
     position: 'absolute',
-    fontSize: Sizes.size_30,
+    fontSize: Sizes.size_26,
     fontFamily: fonts.style,
     fontWeight: '600',
     left: 50,

@@ -15,7 +15,7 @@ import { configureStore } from '@reduxjs/toolkit';
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['cart'],
+  whitelist: ['cart', 'checkout'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducers);

@@ -14,6 +14,7 @@ export default {
   FILTER: require('../assets/png/FilterCopy.png'),
   PRICE: require('../assets/png/Price.png'),
   CROSS: require('../assets/png/Multiply.png'),
+  EDIT: require('../assets/png/EditPencil.png'),
 
   //top bar
   LOGO: require('../assets/png/Logo.png'),

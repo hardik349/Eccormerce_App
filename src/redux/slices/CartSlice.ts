@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { CartState, Product } from '../types/types';
+import { CartState, Product } from '../types/CartTypes';
 
 const initialState: CartState = {
   entities: {},
